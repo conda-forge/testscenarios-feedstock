@@ -22,7 +22,8 @@ requirements:
     - python ${{ python_min }}.*
     - pbr >=0.11
     - pip
-    - setuptools
+    - hatchling
+    - hatch-vcs
   run:
     - pbr >=0.11
     - python >=${{ python_min }}
@@ -41,7 +42,8 @@ tests:
       - if: unix
         then:
           - mkdir -p ${PREFIX}/__hack__
-          - cp -r doc/ README ${PREFIX}/__hack__
+          - cp -r doc/ ${PREFIX}/__hack__
+          - cp -r README.rst ${PREFIX}/__hack__/README
           - python -m testtools.run testscenarios.test_suite
         else:
           - echo "Skip hacky test"
@@ -53,7 +55,7 @@ tests:
         - python >=${{ python_min }}
     files:
       source:
-        - README
+        - README.rst
         - doc/
 
 
