@@ -23,6 +23,7 @@ requirements:
     - pbr >=0.11
     - pip
     - hatchling
+    - hatch-vcs
   run:
     - pbr >=0.11
     - python >=${{ python_min }}
