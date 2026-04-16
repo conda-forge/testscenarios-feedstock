@@ -9,8 +9,8 @@ package:
 source:
   url: https://pypi.org/packages/source/t/testscenarios/testscenarios-${{ version }}.tar.gz
   sha256: edea4e461cb55a25e050e8352e2a9b5e1fe9d36c10121047120a82acd3e465a3
-  patches:
-    - remove-fix-tests.patch
+  # patches:
+  #   - remove-fix-tests.patch
 
 build:
   noarch: python
