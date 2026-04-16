@@ -1,6 +1,6 @@
 context:
   name: testscenarios
-  version: "0.5.0"
+  version: "0.6"
 
 package:
   name: ${{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/t/testscenarios/testscenarios-${{ version }}.tar.gz
-  sha256: c257cb6b90ea7e6f8fef3158121d430543412c9a87df30b5dde6ec8b9b57a2b6
+  sha256: edea4e461cb55a25e050e8352e2a9b5e1fe9d36c10121047120a82acd3e465a3
   patches:
     - remove-fix-tests.patch
 
@@ -22,7 +22,8 @@ requirements:
     - python ${{ python_min }}.*
     - pbr >=0.11
     - pip
-    - setuptools
+    - hatchling
+    - hatch-vcs
   run:
     - pbr >=0.11
     - python >=${{ python_min }}
@@ -41,7 +42,8 @@ tests:
       - if: unix
         then:
           - mkdir -p ${PREFIX}/__hack__
-          - cp -r doc/ README ${PREFIX}/__hack__
+          - cp -r doc/ ${PREFIX}/__hack__
+          - cp -r README.rst ${PREFIX}/__hack__/README
           - python -m testtools.run testscenarios.test_suite
         else:
           - echo "Skip hacky test"
@@ -53,7 +55,7 @@ tests:
         - python >=${{ python_min }}
     files:
       source:
-        - README
+        - README.rst
         - doc/
 
 
