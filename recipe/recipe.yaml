@@ -1,6 +1,6 @@
 context:
   name: testscenarios
-  version: "0.6.1"
+  version: "0.6.2"
 
 package:
   name: ${{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/t/testscenarios/testscenarios-${{ version }}.tar.gz
-  sha256: 3168bc41426b8d39c23dc50e56cfdd3714eeed296ad4734c78eb26642f60a006
+  sha256: ab5ae8cd550e11ea978151981e7a8ecac329b7b22e4dec706b1e6fe213f463e7
   patches:
     - remove-fix-tests.patch
 
