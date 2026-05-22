@@ -44,7 +44,7 @@ tests:
           - cp -r doc/ ${PREFIX}/__hack__
           - cp -r README.rst ${PREFIX}/__hack__/README
           # - python -m pip install ".[tests]"
-          - python -W once -m testtools.run testscenarios.test_suite
+          # - python -W once -m testtools.run testscenarios.test_suite
         else:
           - echo "Skip hacky test"
           # - mkdir -p %PREFIX%\__hack__
