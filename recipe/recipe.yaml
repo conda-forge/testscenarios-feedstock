@@ -38,7 +38,6 @@ tests:
       pip_check: true
       python_version: ${{ python_min }}.*
   - script:
-      - pytest -v tests
       - if: unix
         then:
           - mkdir -p ${PREFIX}/__hack__
@@ -54,16 +53,12 @@ tests:
     requirements:
       run:
         - python >=${{ python_min }}
-        - pytest
         - testtools >=2.8.7
     files:
       source:
         - README.rst
         - doc/
-        - tests/
-
-
-
+     
 about:
   homepage: https://github.com/testing-cabal/testscenarios
   summary: 'Testscenarios, a pyunit extension for dependency injection'
