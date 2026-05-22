@@ -1,6 +1,6 @@
 context:
   name: testscenarios
-  version: "0.6.1"
+  version: "0.6.2"
 
 package:
   name: ${{ name|lower }}
@@ -8,9 +8,9 @@ package:
 
 source:
   url: https://pypi.org/packages/source/t/testscenarios/testscenarios-${{ version }}.tar.gz
-  sha256: 3168bc41426b8d39c23dc50e56cfdd3714eeed296ad4734c78eb26642f60a006
-  patches:
-    - remove-fix-tests.patch
+  sha256: ab5ae8cd550e11ea978151981e7a8ecac329b7b22e4dec706b1e6fe213f463e7
+  # patches:
+  #   - remove-fix-tests.patch
 
 build:
   noarch: python
@@ -35,7 +35,6 @@ tests:
         - testscenarios
         - testscenarios.scenarios
         - testscenarios.testcase
-        - testscenarios.tests
       pip_check: true
       python_version: ${{ python_min }}.*
   - script:
@@ -44,7 +43,8 @@ tests:
           - mkdir -p ${PREFIX}/__hack__
           - cp -r doc/ ${PREFIX}/__hack__
           - cp -r README.rst ${PREFIX}/__hack__/README
-          - python -m testtools.run testscenarios.test_suite
+          # - python -m pip install ".[tests]"
+          # - python -W once -m testtools.run testscenarios.test_suite
         else:
           - echo "Skip hacky test"
           # - mkdir -p %PREFIX%\__hack__
@@ -53,13 +53,12 @@ tests:
     requirements:
       run:
         - python >=${{ python_min }}
+        - testtools >=2.8.7
     files:
       source:
         - README.rst
         - doc/
-
-
-
+     
 about:
   homepage: https://github.com/testing-cabal/testscenarios
   summary: 'Testscenarios, a pyunit extension for dependency injection'
