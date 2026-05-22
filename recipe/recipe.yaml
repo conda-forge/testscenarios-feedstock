@@ -38,12 +38,14 @@ tests:
       pip_check: true
       python_version: ${{ python_min }}.*
   - script:
+      - pytest -v tests
       - if: unix
         then:
           - mkdir -p ${PREFIX}/__hack__
           - cp -r doc/ ${PREFIX}/__hack__
           - cp -r README.rst ${PREFIX}/__hack__/README
-          - python -m testtools.run testscenarios.test_suite
+          # - python -m pip install ".[tests]"
+          - python -W once -m testtools.run testscenarios.test_suite
         else:
           - echo "Skip hacky test"
           # - mkdir -p %PREFIX%\__hack__
@@ -52,10 +54,13 @@ tests:
     requirements:
       run:
         - python >=${{ python_min }}
+        - pytest
+        - testtools >=2.8.7
     files:
       source:
         - README.rst
         - doc/
+        - tests/
 
 
 
