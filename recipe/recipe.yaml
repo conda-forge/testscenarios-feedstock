@@ -1,6 +1,6 @@
 context:
   name: testscenarios
-  version: "0.6.2"
+  version: "0.7.0"
 
 package:
   name: ${{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/t/testscenarios/testscenarios-${{ version }}.tar.gz
-  sha256: ab5ae8cd550e11ea978151981e7a8ecac329b7b22e4dec706b1e6fe213f463e7
+  sha256: da185ee316d877021beb6395f2d80ced22a99c2876c42d54994e3bad3c3daf4d
   # patches:
   #   - remove-fix-tests.patch
 
@@ -58,7 +58,7 @@ tests:
       source:
         - README.rst
         - doc/
-     
+
 about:
   homepage: https://github.com/testing-cabal/testscenarios
   summary: 'Testscenarios, a pyunit extension for dependency injection'
